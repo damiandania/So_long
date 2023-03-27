@@ -1,0 +1,30 @@
+/* XPM */
+static char *_278a78835444bdef7e513f4cfbb8fb0dT5By42gn6MisyOs[] = {
+/* columns rows colors chars-per-pixel */
+"20 20 4 1 ",
+"  c #398C05",
+". c #439E06",
+"X c #429E09",
+"o c #53C70A",
+/* pixels */
+"XXXXXXoXXXX XXXXXXXX",
+"X XXXXoXXXXo XXXXX X",
+"X XX XX oXXX XX ooXX",
+"XXX  XXX oXXXXX  oXX",
+"XXo XXoXX XXXXXXX XX",
+"Xoo XXoXXXXXX XXXXXX",
+"oXXX XXXX  X  XooX X",
+"X XX X XXXX  XXXoX  ",
+"  X oo XXXXXXXXXXXX ",
+" XXoXX oXX  oXXX oXX",
+" X XXXooXXX oXX  ooX",
+"XXXXXX XXXXXXXX XXoX",
+"XXXXX oX X XXX  X XX",
+"X XX ooX X  XXXoX XX",
+"  X XXXX XX oXXXo  X",
+" XXo XX  XXXXoXXXXXX",
+"X oo X ooXXXXo XXoXX",
+"X oX X o..XX oXX ooX",
+"XX  XXXX.XXX XXXX oX",
+"XX X XXXXXXXXXXXXXXX"
+};
