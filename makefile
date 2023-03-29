@@ -1,7 +1,5 @@
 NAME = so_long
 
-INCLIB=/usr/local/lib
-
 # directorio de la biblioteca mlx
 MLX_INC = -I minilibx-linux -I mlx_linux
 MLX_FIR = ./minilibx-linux
@@ -12,7 +10,12 @@ OBJ_DIR = ./obj
 INC_DIR = ./includes
 
 # Archivos fuente y objertos
-SRCS = $(SRC_DIR)/main.c
+SRCS = $(SRC_DIR)/main.c\
+			$(SRC_DIR)/window.c\
+			$(SRC_DIR)/event.c\
+			$(SRC_DIR)/destroy_data.c\
+			$(SRC_DIR)/render.c\
+			$(SRC_DIR)/data.c
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 INCS = $(INC_DIR)/*.h
 
@@ -20,8 +23,13 @@ INCS = $(INC_DIR)/*.h
 CC = clang
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
+
+#### para ;inux activar este comando
 MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
-MLX_FLAGS = -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm
+
+### para mac activar este comando
+#INC_LIB=/usr/local/lib
+#MLX_FLAGS = -L.. -lmlx -L$(INC_LIB) -lXext -lX11 -lm
 
 # reglas
 all: $(NAME)
@@ -48,7 +56,5 @@ fclean: clean
 re:    fclean all
 
 bonus:    re
-
-.PHONY: all clean fclean re bonus
 
 .PHONY: all clean fclean re bonus

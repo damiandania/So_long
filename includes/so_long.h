@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:03:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/03/22 18:30:04 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:43:09 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../minilibx-linux/mlx.h" // biblioteca minilibx
 # include <fcntl.h> // para open()
 # include <stdlib.h> // para malloc() y free()
-# include <stdio.h> // para perror()
 # include <unistd.h> // para write() y close()
 # include <X11/keysym.h> // para el teclado
 # include <X11/X.h> // para el raton
@@ -35,9 +34,9 @@
 // definir direccion de imagenes
 # define WALL_ADDR "../textures/wall.xpm"
 # define PLAYER_ADDR "../textures/player.xpm"
-# define SPACE_ADDR "../textures/freespace.xpm"
+# define SPACE_ADDR "../textures/space.xpm"
 # define EXIT_ADDR "../textures/exit.xpm"
-# define COLLEC_ADDR "../textures/collectible.xpm"
+# define COLLEC_ADDR "../textures/collec.xpm"
 
 # define MLX_ERROR 1 // identificador de error
 
@@ -45,6 +44,8 @@ typedef struct s_img
 {
 	void	*mlx_img;
 	char	*addr;
+	int		width;
+	int		heigth;
 	int		bpp;
 	int		line_len;
 	int		endian;
@@ -60,34 +61,38 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_img	img;
-	int		cur_img;
+	t_img	*img;
+	t_img	*collec;
+	t_img	*exit;
+	t_img	*player;
+	t_img	*space;
+	t_img	*wall;
 }	t_data;
 
-typedef struct s_rect
-{
-	int	x;
-	int	y;
-	int width;
-	int height;
-	int color;
-}	t_rect;
+int main();
 
-// typedef struct	s_game
+// win_init
+void	win_init(t_data *data);
+
+// events
+int		close_window();
+int		keypress(int keysym, t_data *data);
+
+// limpiat memoria
+void destroy_data(t_data *data);
+
+// renderizar las imagenes
+void	render_textures(t_data *data);
+
+
+// typedef struct s_rect
 // {
-// 	void	*mlx_ptr;
-// 	void	*win_ptr;
-// 	int		width;
-// 	int		height;
-// 	int		moves;
-// 	t_image	texture_wall;
-// 	t_image	texture_ground;
-// 	t_image	texture_exit;
-// 	t_image	texture_player;
-// 	t_point	player_pos;
-// 	t_point	exit_pos;
-// 	char	**map;
-// }			t_game;
+// 	int	x;
+// 	int	y;
+// 	int width;
+// 	int height;
+// 	int color;
+// }	t_rect;
 
 // int		read_map(char *filename, t_game *game);
 // int		validate_map(t_game *game);
