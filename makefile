@@ -1,5 +1,7 @@
 NAME = so_long
 
+INCLIB=/usr/local/lib
+
 # directorio de la biblioteca mlx
 MLX_INC = -I minilibx-linux -I mlx_linux
 MLX_FIR = ./minilibx-linux
@@ -19,6 +21,7 @@ CC = clang
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
+MLX_FLAGS = -L.. -lmlx -L$(INCLIB) -lXext -lX11 -lm
 
 # reglas
 all: $(NAME)
@@ -45,5 +48,7 @@ fclean: clean
 re:    fclean all
 
 bonus:    re
+
+.PHONY: all clean fclean re bonus
 
 .PHONY: all clean fclean re bonus

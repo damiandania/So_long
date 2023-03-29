@@ -22,26 +22,46 @@
 # include <X11/keysym.h> // para el teclado
 # include <X11/X.h> // para el raton
 
+// definir tamaños
 # define TILE_SIZE 20 // tamaño de los azulejos
 # define WIN_WIDTH 800// ancho de la ventana
 # define WIN_HEIGHT 600 // altura de la ventana
 
+// definir colores
 # define RED_PIXEL 0xFF0000 // color rojo
 # define GREEN_PIXEL 0xFFFF00 // color verde
 # define WHITE_PIXEL 0xFFFFFF // color blanco
 
+// definir direccion de imagenes
+# define WALL_ADDR "../textures/wall.xpm"
+# define PLAYER_ADDR "../textures/player.xpm"
+# define SPACE_ADDR "../textures/freespace.xpm"
+# define EXIT_ADDR "../textures/exit.xpm"
+# define COLLEC_ADDR "../textures/collectible.xpm"
+
 # define MLX_ERROR 1 // identificador de error
+
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
 
 typedef struct s_point
 {
 	int x;
 	int y;
-}			t_point;
+}	t_point;
 
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_img	img;
+	int		cur_img;
 }	t_data;
 
 typedef struct s_rect
@@ -52,15 +72,6 @@ typedef struct s_rect
 	int height;
 	int color;
 }	t_rect;
-
-// typedef struct s_image
-// {
-// 	void	*img_ptr;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }			t_image;
 
 // typedef struct	s_game
 // {
