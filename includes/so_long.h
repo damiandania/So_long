@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:03:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/03/29 18:43:09 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:22:24 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@
 # define WHITE_PIXEL 0xFFFFFF // color blanco
 
 // definir direccion de imagenes
-# define WALL_ADDR "../textures/wall.xpm"
-# define PLAYER_ADDR "../textures/player.xpm"
-# define SPACE_ADDR "../textures/space.xpm"
-# define EXIT_ADDR "../textures/exit.xpm"
-# define COLLEC_ADDR "../textures/collec.xpm"
+# define WALL_DIR "../textures/wall.xpm"
+# define PLAYER_DIR "../textures/player.xpm"
+# define SPACE_DIR "../textures/space.xpm"
+# define EXIT_DIR "../textures/exit.xpm"
+# define COLLEC_DIR "../textures/collec.xpm"
 
 # define MLX_ERROR 1 // identificador de error
 
 typedef struct s_img
 {
 	void	*mlx_img;
-	char	*addr;
+	char	*DIR;
 	int		width;
 	int		heigth;
 	int		bpp;
