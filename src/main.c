@@ -1,27 +1,40 @@
 #include "../includes/so_long.h"
 
-int main(void /*int ac, char *av[]*/)
+
+int	main(int argc, char **argv)
 {
-	t_data	*data;
+	t_data	data;
 
-	// inicializamos data
-	data = (t_data *)malloc(sizeof(t_data));
-	if (data == 0)
-		destroy_data(data);
-	data->collec = 0;
-	data->exit = 0;
-	data->img = 0;
-	data->mlx_ptr = 0;
-	data->player = 0;
-	data->space = 0;
-	data->wall = 0;
-	data->win_ptr = 0;
+	if (argc != 2)
+	{
+		(error_check(0));
+		return (0);
+	}
+	// if (check_extension(argv[1]) == FAILURE)
+	// 	error_msg(ERRBER, &data);
+	map_read(argv[1], &data);
+	//map_init(&data);
 
-	// data = data_init(av[1]);
-	win_init(data);
+	// // map_check(&data);
+	// // player_init(&data);
+	printf("main 0\n");
 
-	// cargar las texturas
-	render_textures(data);
+	win_init(&data);
+	printf("main 1\n");
+	img_init(&data);
+	printf("main 2\n");
+	// render(&data);
+	printf("main 3\n");
+	// img_loop(data);
+	// img_destroy(data);
+	// free(data.mlx_ptr);
+	// if (data.map.map)
+	// 	ft_free(data.map.map);
+	// }
+	// mlx_loop_hook(data.mlx_ptr, &render, &data);
+	mlx_loop(data.mlx_ptr);
+
+	printf("main 4\n");
 
 	return (0);
 }

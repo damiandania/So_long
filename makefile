@@ -1,42 +1,75 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/24 18:19:17 by ddania-c          #+#    #+#              #
+#    Updated: 2023/04/24 21:08:30 by ddania-c         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#~~~~~NAME~~~~~
 NAME = so_long
 
-# directorio de la biblioteca mlx
+#~~~~~~SOURCES~~~~~~
+SRC_DIR = ./src
+SRCS = $(SRC_DIR)/main.c\
+			$(SRC_DIR)/get_next_line.c \
+			$(SRC_DIR)/get_next_line_utils.c \
+			$(SRC_DIR)/01_map_create.c \
+			$(SRC_DIR)/05_win_init.c \
+			$(SRC_DIR)/06_img_init.c \
+			$(SRC_DIR)/07_render.c \
+			$(SRC_DIR)/09_error.c \
+			#$(SRC_DIR)/02_data_init.c \
+			#$(SRC_DIR)/03_map_check.c \
+			#$(SRC_DIR)/04_player_init.c \
+			#$(SRC_DIR)/08_img_loop.c \
+			#$(SRC_DIR)/09_data_destroy.c
+
+#~~~~~~OBJETS~~~~~
+OBJ_DIR = ./obj
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+#~~~~~~INCLUDES~~~~~~
+INC_DIR = ./includes
+INCS = $(INC_DIR)/*.h
+
+#~~~~~~MINILIBX~~~~~~
 MLX_INC = -I minilibx-linux -I mlx_linux
 MLX_FIR = ./minilibx-linux
 
-# directorios de archivos fuente y bojets
-SRC_DIR = ./src
-OBJ_DIR = ./obj
-INC_DIR = ./includes
+#~~~~~~GNL~~~~~~
+GNL_DIR = ./get_next_line/
+GNL =
+GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 
-# Archivos fuente y objertos
-SRCS = $(SRC_DIR)/main.c\
-			$(SRC_DIR)/window.c\
-			$(SRC_DIR)/event.c\
-			$(SRC_DIR)/destroy_data.c\
-			$(SRC_DIR)/render.c\
-			$(SRC_DIR)/data.c
-OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-INCS = $(INC_DIR)/*.h
+#~~~~~~LIBFT~~~~~
+LIBFT_DIR = ./libft
+LIBFT_PATH = ${LIBFT_DIR}/libft.a
 
-# opciones de compilacion
+#~~~~~~COPILATIION INFO~~~~~~
 CC = clang
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
+LFLAGS:= -L $(LIBFT_DIR) -lft
 
-#### para ;inux activar este comando
+#~~~~~~OS COMPILATION~~~~~~
+# LINUX
 MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
-
-### para mac activar este comando
+# MAC
 #INC_LIB=/usr/local/lib
 #MLX_FLAGS = -L.. -lmlx -L$(INC_LIB) -lXext -lX11 -lm
 
-# reglas
+#~~~~~~COMPILATION RULES~~~~~~
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@echo "\033[0;33m\nCOMPILING SO_LONG..."
-	@$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $@
+$(NAME): $(OBJS) $(GNL_OBJS)
+	@make -C ${LIBFT_DIR}
+	@echo "\033[1;33m\nCOMPILING SO_LONG..."
+	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(MLX_FLAGS) $(LFLAGS) -o $@
 	@echo "\033[1;32m./so_long created\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -44,12 +77,14 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) $(MLX_INC) -O3 -c $< -o $@
 
 clean:
-	@echo "\033[0;31mDeleting so_long object..."
-	@$(RM) $(OBJS)
+	@make clean -C ${LIBFT_DIR}
+	@echo "\033[1;31mDeleting so_long object..."
+	@$(RM) $(OBJS) $(GNL_OBJS)
 	@echo "\033[1;32mDone\n"
 
 fclean: clean
-	@echo "\033[0;31mDeleting so_long executable..."
+	@make fclean -C ${LIBFT_DIR}
+	@echo "\033[1;31mDeleting so_long executable..."
 	@$(RM) $(NAME)
 	@echo "\033[1;32mDone\n"
 
