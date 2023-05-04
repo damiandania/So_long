@@ -6,38 +6,46 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:19:26 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/04/24 20:55:15 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:17:51 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	map_draw(int i, int x, int y, t_data *data)
+void	map_draw(t_data *data)
 {
 	char	*line;
 
-	line = get_next_line(data->map.fd);
+	int	i;
+	int	x;
+	int	y;
+
+	i = 0;
+	x = 0;
+	y = 0;
+
+	line = get_next_line(data->fd);
 	while (line != NULL)
 	{
-		data->map.map[x] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
-		if (!data->map.map[x])
+		data->map[x] = malloc(sizeof(char) * (ft_strlen(line) + 1));
+		if (!data->map[x])
 			return (error_check(1));
 		while (line[i] != '\0')
 		{
-			data->map.map[x][y] = line[i];
-			printf("%c", data->map.map[x][y]); //quitar al final
+			data->map[x][y] = line[i];
+			printf("%c", data->map[x][y]);
 			y++;
 			i++;
 		}
-		data->map.map[x][y] = '\0';
+		data->map[x][y] = '\0';
 		free(line);
-		line = get_next_line(data->map.fd);
+		line = get_next_line(data->fd);
 		y = 0;
 		i = 0;
 		x++;
 	}
-	data->map.map = NULL;
-	printf("map_read 2/3 \n");
+	data->map[x] = NULL;
+	printf("2/3, ");
 }
 
 int	line_counter(char *file_path)
@@ -64,34 +72,29 @@ int	line_counter(char *file_path)
 		}
 		close(fd);
 	}
-	printf("map_read 1/3 \n");
+	printf("1/3, \n");
 	return (line_count);
 }
 
 void	map_read(char *file_path, t_data *data)
 {
-	int	i;
-	int	x;
-	int	y;
+	data->line_count = line_counter(file_path);
+	printf("line_ count = %d\n", data->line_count);
 
-	i = 0;
-	x = 0;
-	y = 0;
-	data->map.line_count = line_counter(file_path);
-	data->map.path = file_path;
-	data->map.map = ft_calloc(data->map.line_count + 1, sizeof (char *));
-	if (data->map.map == 0)
+	data->path = file_path;
+	data->map = (char **)malloc(sizeof(char *) * (data->line_count + 1));
+	if (!data->map)
 		return (error_check(1));
-	data->map.fd = open(file_path, O_RDONLY);
-	if (data->map.fd < 0)
+	data->fd = open(file_path, O_RDONLY);
+	if (data->fd < 0)
 		return (error_check(1));
 	else
 	{
-		map_draw(i, x, y, data);
-		close(data->map.fd);
+		map_draw(data);
+		close(data->fd);
 	}
 
-	printf("El numero de lineas es: %d\n", data->map.line_count); //quitar al final
-	printf("map_read 3/3 \n");
+	printf("3/3, ");
+
 	return ;
 }

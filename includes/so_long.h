@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:03:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/04/24 21:25:16 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:23:14 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,11 @@
 # define WHITE_PIXEL 0xFFFFFF // color blanco
 
 // definir direccion de imagenes
-# define WALL_DIR "../textures/wall.xpm"
-# define PLAYER_DIR "../textures/player.xpm"
-# define SPACE_DIR "../textures/space.xpm"
-# define EXIT_DIR "../textures/exit.xpm"
-# define COLLEC_DIR "../textures/collec.xpm"
-
-typedef struct s_map
-{
-	int		fd;
-	int		line_count;
-	char	**map;
-	char	*path;
-
-}	t_map;
+# define WALL_DIR "textures/wall.xpm"
+# define PLAYER_DIR "textures/player.xpm"
+# define SPACE_DIR "textures/space.xpm"
+# define EXIT_DIR "textures/exit.xpm"
+# define COLLEC_DIR "textures/collec.xpm"
 
 typedef struct s_img
 {
@@ -72,8 +63,12 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		move_count;
 	t_img	img;
-	t_map	map;
+	char	**map;
+	int		fd;
+	int		line_count;
+	char	*path;
 }	t_data;
 
 
@@ -82,7 +77,7 @@ int		line_counter(char *file_path);
 void	map_read(char *file_path, t_data *data);
 
 // 02_DATA_INIT
-
+void	data_init(t_data *data);
 
 // 03_MAP_CHECK
 

@@ -6,7 +6,7 @@
 #    By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 18:19:17 by ddania-c          #+#    #+#              #
-#    Updated: 2023/04/24 21:08:30 by ddania-c         ###   ########.fr        #
+#    Updated: 2023/05/04 18:02:21 by ddania-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,11 @@ SRCS = $(SRC_DIR)/main.c\
 			$(SRC_DIR)/get_next_line.c \
 			$(SRC_DIR)/get_next_line_utils.c \
 			$(SRC_DIR)/01_map_create.c \
+			$(SRC_DIR)/02_data_init.c \
 			$(SRC_DIR)/05_win_init.c \
 			$(SRC_DIR)/06_img_init.c \
 			$(SRC_DIR)/07_render.c \
 			$(SRC_DIR)/09_error.c \
-			#$(SRC_DIR)/02_data_init.c \
 			#$(SRC_DIR)/03_map_check.c \
 			#$(SRC_DIR)/04_player_init.c \
 			#$(SRC_DIR)/08_img_loop.c \
@@ -51,7 +51,7 @@ LIBFT_DIR = ./libft
 LIBFT_PATH = ${LIBFT_DIR}/libft.a
 
 #~~~~~~COPILATIION INFO~~~~~~
-CC = clang
+CC = clang 
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 LFLAGS:= -L $(LIBFT_DIR) -lft

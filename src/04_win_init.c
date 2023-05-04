@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:09:04 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/04/24 21:09:05 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:24:36 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	win_init(t_data *data)
 	// Cierre de la ventana
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &keypress, &data);
 	// mlx_hook(data->win_ptr, 17, 0, &close_window, NULL);
-	printf("win_init 1/1 \n");
+	printf("1/1, ");
 }
 

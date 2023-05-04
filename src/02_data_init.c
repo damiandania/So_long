@@ -1,18 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   02_data_init.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 18:34:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/04/24 18:52:15 by ddania-c         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/so_long.h"
 
 void	data_init(t_data *data)
 {
+	data->img.heigth = IMG_SIZE;
+	data->img.width = IMG_SIZE;
+	data->move_count = 0;
 
+	printf("1/1, ");
 }
