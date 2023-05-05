@@ -12,6 +12,5 @@ void	img_init(t_data *data)
 			&data->img.width, &data->img.heigth);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx_ptr, WALL_DIR,
 			&data->img.width, &data->img.heigth);
-	printf("1/1, ");
 }
 

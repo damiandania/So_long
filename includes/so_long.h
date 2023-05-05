@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:03:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/04 19:23:14 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:37:01 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,24 @@ typedef struct s_img
 	void	*player;
 	void	*space;
 	void	*wall;
-}	t_img;
+}		t_img;
 
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		move_count;
-	t_img	img;
 	char	**map;
 	int		fd;
 	int		line_count;
 	char	*path;
-}	t_data;
+	int		ppi;
+	int		ppj;
+	int		allow_exit;
+	int		n_collec;
+	t_img	img;
+}		t_data;
+
 
 
 // 01_MAP_READ
@@ -78,32 +83,33 @@ void	map_read(char *file_path, t_data *data);
 
 // 02_DATA_INIT
 void	data_init(t_data *data);
+void	player_init(t_data *data);
 
 // 03_MAP_CHECK
 
 
-// 04_PLAYER_INIT
-
-
-// 05_WIN_INIT
+// 04_WIN_INIT
 void	win_init(t_data *data);
 
-// 06_IMG_INIT
+// 05_IMG_INIT
 void	img_init(t_data *data);
 
-// 07_RENDER
-void	render(t_data *data);
+// 06_RENDER
+int		render(t_data *data);
+void	img_loop(t_data data);
 
-// 08_IMG_LOOP
+// 07_EVENTS
+int		press_exit(t_data *data);
+int		keypress(int keysym, t_data *data);
 
+// 08_MOVE
+void	player_move(t_data *data, char key);
 
 // 09_DATA_DESTROY
 void error_check(int id);
 
 
-// events
-int		close_window();
-int		keypress(int keysym, t_data *data);
+
 
 #endif
 

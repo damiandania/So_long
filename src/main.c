@@ -36,16 +36,17 @@ int	main(int argc, char **argv)
 	render(&data);
 	printf("OK\n");
 
-	// img_loop(data);
+	printf("------loop: \n");
+	img_loop(data);
+	printf("OK\n");
+
 	// img_destroy(data);
 	// free(data.mlx_ptr);
 	// if (data.map.map)
 	// 	ft_free(data.map.map);
 	// }
 	// mlx_loop_hook(data.mlx_ptr, &render_img, &data);
-	printf("------loop: ");
-	mlx_loop(data.mlx_ptr);
-	printf("OK\n");
+
 
 	return (0);
 }

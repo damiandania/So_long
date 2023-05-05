@@ -5,6 +5,33 @@ void	data_init(t_data *data)
 	data->img.heigth = IMG_SIZE;
 	data->img.width = IMG_SIZE;
 	data->move_count = 0;
+	data->ppi = 0;
+	data->ppj= 0;
+	data->n_collec =  0;
+	player_init(data);
+}
 
-	printf("1/1, ");
+void	player_init(t_data *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j])
+		{
+						if (data->map[i][j] == 'P')
+			{
+				data->ppi = i;
+				data->ppj = j;
+			}
+			if (data->map[i][j++] == 'C')
+				data->n_collec++;
+		}
+		i++;
+	}
+	// printf("\nNumero de collectibles es: [%d]", data->n_collec);
+	// printf("\nEl personaje esta en [%d][%d]", data->ppi, data->ppj);
 }

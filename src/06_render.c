@@ -2,8 +2,6 @@
 
 void	put_img(t_data *data, int i, int j, int size)
 {
-	printf("test\n");
-
 	if (data->map[i][j] == '1')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.wall,
 			size, i * IMG_SIZE);
@@ -20,19 +18,15 @@ void	put_img(t_data *data, int i, int j, int size)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.collec,
 			size, i * IMG_SIZE);
 
-	printf("1/2, \n");
 }
 
-void	render(t_data *data)
+int	render(t_data *data)
 {
 	int		i;
 	int		j;
 	int		size;
 
-
 	i = 0;
-
-	printf("init: \n");
 	while (i < data->line_count)
 	{
 		j = 0;
@@ -45,5 +39,16 @@ void	render(t_data *data)
 		}
 		i++;
 	}
-	printf("2/2, \n");
+	return (0);
+	printf("1/1, ");
 }
+
+void	img_loop(t_data data)
+{
+	mlx_loop_hook(data.mlx_ptr, &render, &data);
+	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &keypress, &data);
+	mlx_hook(data.win_ptr, 17, LeaveWindowMask,
+		&press_exit, &data);
+	mlx_loop(data.mlx_ptr);
+}
+
