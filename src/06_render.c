@@ -17,7 +17,6 @@ void	put_img(t_data *data, int i, int j, int size)
 	else if (data->map[i][j] == 'C')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.collec,
 			size, i * IMG_SIZE);
-
 }
 
 int	render(t_data *data)
@@ -40,7 +39,6 @@ int	render(t_data *data)
 		i++;
 	}
 	return (0);
-	printf("1/1, ");
 }
 
 void	img_loop(t_data data)

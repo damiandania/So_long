@@ -24,7 +24,7 @@
 # include "get_next_line.h" // gnl
 
 // definir tamaños
-# define IMG_SIZE 20 // tamaño de las imagenes
+# define IMG_SIZE 32 // tamaño de las imagenes
 # define WIN_WIDTH 800// ancho de la ventana
 # define WIN_HEIGHT 600 // altura de la ventana
 

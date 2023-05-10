@@ -28,8 +28,6 @@ SRCS = $(SRC_DIR)/main.c\
 			$(SRC_DIR)/07_events.c \
 			$(SRC_DIR)/09_error.c \
 
-
-
 #~~~~~~OBJETS~~~~~
 OBJ_DIR = ./obj
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -44,7 +42,6 @@ MLX_FIR = ./minilibx-linux
 
 #~~~~~~GNL~~~~~~
 GNL_DIR = ./get_next_line/
-GNL =
 GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 
 #~~~~~~LIBFT~~~~~
@@ -52,17 +49,17 @@ LIBFT_DIR = ./libft
 LIBFT_PATH = ${LIBFT_DIR}/libft.a
 
 #~~~~~~COPILATIION INFO~~~~~~
-CC = clang
+CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 LFLAGS:= -L $(LIBFT_DIR) -lft
 
 #~~~~~~OS COMPILATION~~~~~~
 # LINUX
-MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
+#MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
 # MAC
-#INC_LIB=/usr/local/lib
-#MLX_FLAGS = -L.. -lmlx -L$(INC_LIB) -lXext -lX11 -lm
+INC_LIB=/usr/local/lib
+MLX_FLAGS = -L.. -lmlx -L$(INC_LIB) -lXext -lX11
 
 #~~~~~~COMPILATION RULES~~~~~~
 all: $(NAME)
