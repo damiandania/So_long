@@ -6,7 +6,7 @@
 #    By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 18:19:17 by ddania-c          #+#    #+#              #
-#    Updated: 2023/05/05 14:51:36 by ddania-c         ###   ########.fr        #
+#    Updated: 2023/05/10 15:55:24 by ddania-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,10 @@ LFLAGS:= -L $(LIBFT_DIR) -lft
 
 #~~~~~~OS COMPILATION~~~~~~
 # LINUX
-#MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
+MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
 # MAC
-INC_LIB=/usr/local/lib
-MLX_FLAGS = -L.. -lmlx -L$(INC_LIB) -lXext -lX11
+#INC_LIB=/usr/local/lib
+#MLX_FLAGS = -L.. -lmlx -L$(INC_LIB) -lXext -lX11
 
 #~~~~~~COMPILATION RULES~~~~~~
 all: $(NAME)
