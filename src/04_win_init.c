@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:09:04 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/05 14:33:44 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/10 20:42:31 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	win_init(t_data *data)
 	if (data->mlx_ptr == NULL)
 		return (error_check(5));
 	data->win_ptr = mlx_new_window(data->mlx_ptr, IMG_SIZE * win_width(data),
-			IMG_SIZE * data->line_count, "so_long");
+			IMG_SIZE * data->i_counter, "so_long");
 	if (data->win_ptr == NULL)
 	{
 		free(data->win_ptr);

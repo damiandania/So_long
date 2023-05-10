@@ -20,29 +20,24 @@ int	main(int argc, char **argv)
 	data_init(&data);
 	printf("OK\n");
 
-	// // map_check(&data);
-	// // player_init(&data);
-	// printf("--- map_read: OK\n");
+	printf("---map_check: \n");
+	map_check(&data);
+	printf("OK\n");
 
-	printf("---win_init: ");
+	printf("----win_init: ");
 	win_init(&data);
 	printf("OK\n");
 
-	printf("----img_init: ");
+	printf("-----img_init: ");
 	img_init(&data);
 	printf("OK\n");
 
-	printf("-----render: ");
+	printf("------render: ");
 	render(&data);
 	printf("OK\n");
 
-	printf("------loop: OK\n");
+	printf("-------loop: OK\n");
 	img_loop(data);
-
-	// img_destroy(data);
-	// free(data.mlx_ptr);
-	// if (data.map.map)
-	// 	ft_free(data.map.map);
 
 	return (0);
 }

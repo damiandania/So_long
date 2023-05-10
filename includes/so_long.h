@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:03:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/05 16:37:01 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/10 20:39:21 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ typedef struct s_data
 	int		move_count;
 	char	**map;
 	int		fd;
-	int		line_count;
+	int		i_counter;
+	int		j_counter;
 	char	*path;
 	int		ppi;
 	int		ppj;
@@ -74,8 +75,6 @@ typedef struct s_data
 	int		n_collec;
 	t_img	img;
 }		t_data;
-
-
 
 // 01_MAP_READ
 int		line_counter(char *file_path);
@@ -86,7 +85,7 @@ void	data_init(t_data *data);
 void	player_init(t_data *data);
 
 // 03_MAP_CHECK
-
+void	map_check(t_data *data);
 
 // 04_WIN_INIT
 void	win_init(t_data *data);
@@ -105,11 +104,8 @@ int		keypress(int keysym, t_data *data);
 // 08_MOVE
 void	player_move(t_data *data, char key);
 
-// 09_DATA_DESTROY
-void error_check(int id);
-
-
-
+// 09_ERROR
+void	error_check(int id);
+void	destroy_img(t_data data);
 
 #endif
-

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   06_render.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/10 20:13:18 by ddania-c          #+#    #+#             */
+/*   Updated: 2023/05/10 20:42:56 by ddania-c         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	put_img(t_data *data, int i, int j, int size)
@@ -26,7 +38,7 @@ int	render(t_data *data)
 	int		size;
 
 	i = 0;
-	while (i < data->line_count)
+	while (i < data->i_counter)
 	{
 		j = 0;
 		size = 0;
