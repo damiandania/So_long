@@ -1,25 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   09_error.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/11 15:22:10 by ddania-c          #+#    #+#             */
+/*   Updated: 2023/05/11 17:00:05 by ddania-c         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-void error_check(int id)
+void	safe_exit(t_data *data, char *msg)
 {
-	if (id == 0)
-		ft_printf("error: argument not valid\n");
-	if (id == 1)
-		ft_printf("error: map not valid\n");
-	if (id == 2)
-		ft_printf("error: map is not rentangle\n");
-	if (id == 3)
-		ft_printf("error: %d\n", id);
-	if (id == 4)
-		ft_printf("error: %d\n", id);
-	if (id == 5)
-		ft_printf("error: %d\n", id);
-	if (id == 6)
-		ft_printf("error: %d\n", id);
-	if (id == 7)
-		ft_printf("error: %d\n", id);
-	if (id == 8)
-		ft_printf("error: %d\n", id);
+	if (data->map)
+		data_free(data->map);
+	ft_putstr_fd("Error: ", 2);
+	ft_putstr_fd(msg, 2);
+	exit(1);
 }
 
 void	destroy_img(t_data data)
@@ -31,3 +30,19 @@ void	destroy_img(t_data data)
 	mlx_destroy_image(data.mlx_ptr, data.img.space);
 	mlx_destroy_display(data.mlx_ptr);
 }
+
+void	data_free(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+	map = NULL;
+	return ;
+}
+

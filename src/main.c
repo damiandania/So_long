@@ -7,37 +7,21 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		(error_check(0));
-		return (0);
+		ft_putstr_fd("argument not valid .ber file", 2);
+		return (2);
 	}
 	// if (check_extension(argv[1]) == FAILURE)
 	// 	error_msg(ERRBER, &data);
-	printf("-map_read: ");
 	map_read(argv[1], &data);
-	printf("OK\n");
-
-	printf("--data_init: ");
 	data_init(&data);
-	printf("OK\n");
-
-	printf("---map_check: \n");
 	map_check(&data);
-	printf("OK\n");
-
-	printf("----win_init: ");
 	win_init(&data);
-	printf("OK\n");
-
-	printf("-----img_init: ");
 	img_init(&data);
-	printf("OK\n");
-
-	printf("------render: ");
 	render(&data);
-	printf("OK\n");
-
-	printf("-------loop: OK\n");
 	img_loop(data);
-
+	mlx_loop_hook(data.mlx_ptr, &render, &data);
+	free(data.mlx_ptr);
+	if (data.map)
+		data_free(data.map);
 	return (0);
 }

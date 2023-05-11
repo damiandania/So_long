@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:08:21 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/10 20:14:35 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:31:24 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	data_init(t_data *data)
 	data->move_count = 0;
 	data->ppi = 0;
 	data->ppj = 0;
-	data->n_collec = 0;
+	data->c_counter = 0;
+	data->p_counter = 0;
+	data->e_counter = 0;
 	player_init(data);
 }
 
@@ -39,8 +41,12 @@ void	player_init(t_data *data)
 				data->ppi = i;
 				data->ppj = j;
 			}
-			if (data->map[i][j++] == 'C')
-				data->n_collec++;
+			if (data->map[i][j] == 'C')
+				data->c_counter++;
+			if (data->map[i][j] == 'E')
+				data->e_counter++;
+			if (data->map[i][j++] == 'P')
+				data->p_counter++;
 		}
 		i++;
 	}

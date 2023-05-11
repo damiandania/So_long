@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:19:26 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/10 20:39:33 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:31:24 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	map_draw(t_data *data)
 	{
 		data->map[x] = malloc(sizeof(char) * (ft_strlen(line) + 1));
 		if (!data->map[x])
-			return (error_check(1));
+			return (safe_exit(data, "map not valid"));
 		y = 0;
 		i = 0;
 		while (line[i] != '\0')
@@ -38,7 +38,7 @@ void	map_draw(t_data *data)
 	free(line);
 }
 
-int	line_counter(char *file_path)
+int	line_counter(t_data *data, char *file_path)
 {
 	int		fd;
 	int		line_count;
@@ -48,7 +48,7 @@ int	line_counter(char *file_path)
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 	{
-		(error_check(1));
+		(safe_exit(data, "map not valid"));
 		return (0);
 	}
 	else
@@ -67,14 +67,14 @@ int	line_counter(char *file_path)
 
 void	map_read(char *file_path, t_data *data)
 {
-	data->i_counter = line_counter(file_path);
+	data->i_counter = line_counter(data, file_path);
 	data->path = file_path;
 	data->map = (char **)malloc(sizeof(char *) * (data->i_counter + 1));
 	if (!data->map)
-		return (error_check(1));
+		return (safe_exit(data, "map not valid"));
 	data->fd = open(file_path, O_RDONLY);
 	if (data->fd < 0)
-		return (error_check(1));
+		return (safe_exit(data, "map not valid"));
 	else
 	{
 		map_draw(data);

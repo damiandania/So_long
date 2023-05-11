@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:13:11 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/10 20:30:22 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:23:35 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ int	check_exit(t_data *data, char key)
 			(key == W && data->map[data->ppi - 1][data->ppj] == 'E') ||
 			(key == S && data->map[data->ppi + 1][data->ppj] == 'E'))
 	{
-		if (data->n_collec == 0)
+		if (data->c_counter == 0)
 		{
-			ft_printf("\n~ Game completed ~\n");
+			if (system("clear") != 0)
+				safe_exit(data, "cleaning the screen");
+			ft_printf("~ Game completed ~\n");
 			ft_printf("~ Total steps: %d ~\n", ++data->move_count);
 			mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 			data->win_ptr = NULL;
@@ -47,7 +49,7 @@ int	check_exit(t_data *data, char key)
 void	check_collec(t_data *data)
 {
 	if (data->map[data->ppi][data->ppj] == 'C')
-		data->n_collec--;
+		data->c_counter--;
 }
 
 void	player_move(t_data *data, char key)
@@ -65,6 +67,9 @@ void	player_move(t_data *data, char key)
 			data->ppi++;
 		check_collec(data);
 		data->map[data->ppi][data->ppj] = 'P';
+		;
+		if (system("clear") != 0)
+			safe_exit(data, "cleaning the screen");
 		ft_printf("Step counter: %d\n", ++data->move_count);
 	}
 }
