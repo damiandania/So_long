@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:23:44 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 17:53:07 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 19:21:29 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ void	check_ext(char *path, int argc)
 {
 	check_argc(argc);
 	check_ext_format(path);
-	printf("\n%d\n", argc);
 }

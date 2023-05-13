@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:03:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 18:30:15 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 19:52:38 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ void	player_move(t_data *data, char key);
 void	exit_ok(t_data *data, char *msg);
 void	exit_fail(t_data *data, char *msg);
 void	destroy_img(t_data *data);
-void	free_map(t_data *data);
+void	free_map(char **map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:11:39 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 18:31:21 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 19:21:12 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,16 @@ void	check_walls(t_data *data)
 	i = 0;
 	while (i < (data->j_counter - 1))
 	{
-		if ((data->map[0][i] != '1') || (data->map[data->i_counter - 1][i] != '1'))
+		if ((data->map[0][i] != '1') ||
+				(data->map[data->i_counter - 1][i] != '1'))
 			exit_fail(data, "walls no valid");
 		i++;
 	}
 	i = 0;
 	while (i < (data->i_counter - 1))
 	{
-		if ((data->map[i][0] != '1') || (data->map[i][data->j_counter - 2] != '1'))
+		if ((data->map[i][0] != '1') ||
+				(data->map[i][data->j_counter - 2] != '1'))
 			exit_fail(data, "walls no valid");
 		i++;
 	}
@@ -78,9 +80,7 @@ void	check_rectangle(t_data *data)
 
 void	map_check(t_data *data)
 {
-	printf("\n12 Aqui\n");
 	check_rectangle(data);
-	printf("\n2 Aqui\n");
 	check_char(data);
 	check_walls(data);
 }

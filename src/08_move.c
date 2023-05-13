@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:13:11 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 18:38:42 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 19:55:35 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	check_exit(t_data *data, char key)
 		{
 			if (system("clear") != 0)
 				exit_fail(data, "cleaning the screen\n");
-			exit_ok(data, "game finished\n");
+			ft_printf("Total steps: %d\n", ++data->move_count);
+			exit_ok(data, "Game finished\n");
 			return (0);
 		}
 		else
@@ -64,7 +65,6 @@ void	player_move(t_data *data, char key)
 			data->ppi++;
 		check_collec(data);
 		data->map[data->ppi][data->ppj] = 'P';
-		;
 		if (system("clear") != 0)
 			exit_fail(data, "cleaning the screen\n");
 		ft_printf("Steps counter: %d\n", ++data->move_count);

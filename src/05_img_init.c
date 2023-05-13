@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:13:21 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/10 20:13:22 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:50:31 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ void	img_init(t_data *data)
 	data->img.wall = mlx_xpm_file_to_image(data->mlx_ptr, WALL_DIR,
 			&data->img.width, &data->img.heigth);
 }
-

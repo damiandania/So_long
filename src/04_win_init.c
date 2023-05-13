@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:09:04 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 18:34:07 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:50:19 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ void	win_init(t_data *data)
 		return (exit_fail(data, "opening window"));
 	}
 }
-

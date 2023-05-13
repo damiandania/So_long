@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:13:18 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/10 20:42:56 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 19:14:06 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void	img_loop(t_data data)
 {
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &keypress, &data);
-	mlx_hook(data.win_ptr, 17, LeaveWindowMask,
-		&press_exit, &data);
+	mlx_hook(data.win_ptr, 17, 0, &press_exit, &data);
 	mlx_loop(data.mlx_ptr);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:22:10 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 18:37:07 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 19:47:45 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 void	exit_ok(t_data *data, char *msg)
 {
-	destroy_img(data);
-	free_map(data);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
-	mlx_destroy_display(data->mlx_ptr);
+	destroy_img(data);
 	free(data->mlx_ptr);
 	ft_printf("%s\n", msg);
+	if (data->map)
+		free_map(data->map);
+	data->win_ptr = NULL;
 	exit (0);
 }
 
 void	exit_fail(t_data *data, char *msg)
 {
-	destroy_img(data);
-	free_map(data);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	data->win_ptr = NULL;
+	destroy_img(data);
+	free(data->mlx_ptr);
 	ft_printf("%s\n", msg);
+	if (data->map)
+		free_map(data->map);
+	data->win_ptr = NULL;
 	exit (1);
 }
 
@@ -44,21 +46,17 @@ void	destroy_img(t_data *data)
 	mlx_destroy_display(data->mlx_ptr);
 }
 
-void	free_map(t_data *data)
+void	free_map(char **map)
 {
-	int	i;
-	int	j;
+	size_t	i;
 
 	i = 0;
-	while (data->map[i])
+	while (map[i])
 	{
-		j = 0;
-		while (data->map[i][j])
-		{
-			free((void *)(intptr_t)data->map[i][j]);
-			j++;
-		}
+		free(map[i]);
 		i++;
 	}
+	free(map);
+	map = NULL;
+	return ;
 }
-
