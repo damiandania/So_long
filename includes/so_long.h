@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:03:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/11 17:16:16 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:30:15 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@
 # include <X11/keysym.h> // para el teclado
 # include <X11/X.h> // para el raton
 # include "get_next_line.h" // gnl
+
+# ifndef O_DIRECTORY
+#  define O_DIRECTORY 00200000
+# endif
+
+# define OK 0
+# define FAIL 1
 
 // definir tamaños
 # define IMG_SIZE 32 // tamaño de las imagenes
@@ -78,37 +85,45 @@ typedef struct s_data
 	t_img	img;
 }		t_data;
 
-// 01_MAP_READ
-int		line_counter(t_data *data, char *file_path);
-void	map_read(char *file_path, t_data *data);
+//////////////		00_CHECK_EXT		//////////////
+void	check_ext(char *path, int argc);
+void	check_argc(int argc);
+void	check_ext_format(char *path);
+void	file_empty(int fd);
 
-// 02_DATA_INIT
+//////////////		01_MAP_READ			//////////////
+int		line_counter(t_data *data, char *file_path);
+void	read_map(char *file_path, t_data *data);
+void	map_to_ptr(t_data *data);
+
+//////////////		02_DATA_INIT		//////////////
 void	data_init(t_data *data);
 void	player_init(t_data *data);
 
-// 03_MAP_CHECK
+//////////////		03_MAP_CHECK		//////////////
 void	map_check(t_data *data);
 
-// 04_WIN_INIT
+//////////////		04_WIN_INIT			//////////////
 void	win_init(t_data *data);
 
-// 05_IMG_INIT
+//////////////		05_IMG_INIT			//////////////
 void	img_init(t_data *data);
 
-// 06_RENDER
+//////////////		06_RENDER			//////////////
 int		render(t_data *data);
 void	img_loop(t_data data);
 
-// 07_EVENTS
+//////////////		07_EVENTS			//////////////
 int		press_exit(t_data *data);
 int		keypress(int keysym, t_data *data);
 
-// 08_MOVE
+//////////////		08_MOVE				//////////////
 void	player_move(t_data *data, char key);
 
-// 09_ERROR
-void	safe_exit(t_data *data, char *msg);
-void	destroy_img(t_data data);
-void	data_free(char **map);
+//////////////		09_ERROR			//////////////
+void	exit_ok(t_data *data, char *msg);
+void	exit_fail(t_data *data, char *msg);
+void	destroy_img(t_data *data);
+void	free_map(t_data *data);
 
 #endif

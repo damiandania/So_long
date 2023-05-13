@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:13:11 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/11 17:23:35 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/13 18:38:42 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ int	check_exit(t_data *data, char key)
 		if (data->c_counter == 0)
 		{
 			if (system("clear") != 0)
-				safe_exit(data, "cleaning the screen");
-			ft_printf("~ Game completed ~\n");
-			ft_printf("~ Total steps: %d ~\n", ++data->move_count);
-			mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-			data->win_ptr = NULL;
-			exit (0);
+				exit_fail(data, "cleaning the screen\n");
+			exit_ok(data, "game finished\n");
+			return (0);
 		}
 		else
 			return (0);
@@ -69,7 +66,7 @@ void	player_move(t_data *data, char key)
 		data->map[data->ppi][data->ppj] = 'P';
 		;
 		if (system("clear") != 0)
-			safe_exit(data, "cleaning the screen");
-		ft_printf("Step counter: %d\n", ++data->move_count);
+			exit_fail(data, "cleaning the screen\n");
+		ft_printf("Steps counter: %d\n", ++data->move_count);
 	}
 }

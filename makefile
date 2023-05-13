@@ -6,7 +6,7 @@
 #    By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 18:19:17 by ddania-c          #+#    #+#              #
-#    Updated: 2023/05/11 16:59:28 by ddania-c         ###   ########.fr        #
+#    Updated: 2023/05/13 18:28:19 by ddania-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,18 +15,19 @@ NAME = so_long
 
 #~~~~~~SOURCES~~~~~~
 SRC_DIR = ./src
-SRCS = $(SRC_DIR)/main.c\
-			$(SRC_DIR)/get_next_line.c \
-			$(SRC_DIR)/get_next_line_utils.c \
-			$(SRC_DIR)/01_map_create.c \
-			$(SRC_DIR)/02_data_init.c \
-			$(SRC_DIR)/03_map_check.c \
-			$(SRC_DIR)/04_win_init.c \
-			$(SRC_DIR)/05_img_init.c \
-			$(SRC_DIR)/06_render.c \
-			$(SRC_DIR)/08_move.c \
-			$(SRC_DIR)/07_events.c \
-			$(SRC_DIR)/09_error.c \
+SRCS	= 	$(SRC_DIR)/main.c				\
+			$(SRC_DIR)/get_next_line.c		\
+			$(SRC_DIR)/get_next_line_utils.c\
+			$(SRC_DIR)/00_check_ext.c		\
+			$(SRC_DIR)/01_read_map.c		\
+			$(SRC_DIR)/02_data_init.c		\
+			$(SRC_DIR)/03_map_check.c		\
+			$(SRC_DIR)/04_win_init.c		\
+			$(SRC_DIR)/05_img_init.c		\
+			$(SRC_DIR)/06_render.c			\
+			$(SRC_DIR)/08_move.c			\
+			$(SRC_DIR)/07_events.c			\
+			$(SRC_DIR)/09_exit_clean.c		\
 
 #~~~~~~OBJETS~~~~~
 OBJ_DIR = ./obj
@@ -66,9 +67,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(GNL_OBJS)
 	@make -C ${LIBFT_DIR}
-	@echo "\033[1;33m\nCOMPILING SO_LONG..."
+	@echo "Compiling So_long..."
 	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(MLX_FLAGS) $(LFLAGS) -o $@
-	@echo "\033[1;32m./so_long created\n"
+	@echo "OK\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
@@ -76,18 +77,18 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@make clean -C ${LIBFT_DIR}
-	@echo "\033[1;31mDeleting so_long object..."
+	@echo "Deleting so_long object..."
 	@$(RM) $(OBJS) $(GNL_OBJS)
-	@echo "\033[1;32mDone\n"
+	@echo "OK\n"
 
 fclean: clean
 	@make fclean -C ${LIBFT_DIR}
-	@echo "\033[1;31mDeleting so_long executable..."
+	@echo "Deleting so_long executable..."
 	@$(RM) $(NAME)
-	@echo "\033[1;32mDone\n"
+	@echo "OK\n"
 
-re:    fclean all
+re:		fclean all
 
-bonus:    re
+bonus:	re
 
-.PHONY: all clean fclean re bonus
+.PHONY:	all clean fclean re bonus
