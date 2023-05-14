@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:22:10 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 19:47:45 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:50:15 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ void	exit_ok(t_data *data, char *msg)
 
 void	exit_fail(t_data *data, char *msg)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	destroy_img(data);
+	if (data->mlx_ptr != NULL)
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	if (data->mlx_ptr != NULL)
+		destroy_img(data);
 	free(data->mlx_ptr);
-	ft_printf("%s\n", msg);
 	if (data->map)
 		free_map(data->map);
 	data->win_ptr = NULL;
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
 	exit (1);
 }
 

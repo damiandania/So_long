@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 17:23:44 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 19:21:29 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:45:04 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_argc(int argc)
 {
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error: number of arguments\n", 2);
+		ft_putstr_fd("Error\nNumber of arguments\n", 2);
 		exit (1);
 	}
 }
@@ -31,7 +31,7 @@ void	check_ext_format(char *path)
 	{
 		fd = open(path, O_DIRECTORY);
 		close(fd);
-		ft_putstr_fd("Error: extention is not a file\n", 2);
+		ft_putstr_fd("Error\nThe extention is not a file\n", 2);
 		exit (1);
 	}
 	fd = open(path, O_RDONLY);
@@ -45,7 +45,7 @@ void	check_ext_format(char *path)
 	else
 	{
 		close(fd);
-		ft_putstr_fd("Error: extention format not valid\n", 2);
+		ft_putstr_fd("Error\nThe extention format not valid\n", 2);
 		exit (1);
 	}
 }
@@ -59,7 +59,7 @@ void	file_empty(int fd)
 	if (bytes_read == 0)
 	{
 		close(fd);
-		ft_putstr_fd("Error: empty file\n", 2);
+		ft_putstr_fd("Error\nEmpty file\n", 2);
 		exit (1);
 	}
 	close(fd);

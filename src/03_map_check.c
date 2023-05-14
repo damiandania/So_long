@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:11:39 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 19:21:12 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/14 13:46:40 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	check_char(t_data *data)
 			if ((data->map[i][j] != '1') && (data->map[i][j] != 'C') &&
 					(data->map[i][j] != 'P') && (data->map[i][j] != '0') &&
 					(data->map[i][j] != 'E') && (data->map[i][j] != '\n'))
-				exit_fail(data, "map not valid");
+				exit_fail(data, "Map not valid\n");
 			if (data->c_counter < 1)
-				exit_fail(data, "collectibles");
+				exit_fail(data, "Collectibles\n");
 			if (data->p_counter != 1)
-				exit_fail(data, "player");
+				exit_fail(data, "Player\n");
 			if (data->e_counter != 1)
-				exit_fail(data, "exit");
+				exit_fail(data, "Exit\n");
 			j++;
 		}
 		i++;
@@ -48,7 +48,7 @@ void	check_walls(t_data *data)
 	{
 		if ((data->map[0][i] != '1') ||
 				(data->map[data->i_counter - 1][i] != '1'))
-			exit_fail(data, "walls no valid");
+			exit_fail(data, "Walls no valid\n");
 		i++;
 	}
 	i = 0;
@@ -56,7 +56,7 @@ void	check_walls(t_data *data)
 	{
 		if ((data->map[i][0] != '1') ||
 				(data->map[i][data->j_counter - 2] != '1'))
-			exit_fail(data, "walls no valid");
+			exit_fail(data, "Walls no valid\n");
 		i++;
 	}
 }
@@ -72,7 +72,7 @@ void	check_rectangle(t_data *data)
 	{
 		temp = ft_strlen(data->map[i]);
 		if (data->j_counter != temp)
-			exit_fail(data, "map is not rectangle");
+			exit_fail(data, "Map is not rectangle\n");
 		data->j_counter = temp;
 		i++;
 	}
