@@ -41,6 +41,33 @@ int	check_exit(t_data *data, char key)
 	return (1);
 }
 
+void	player_go(t_data *data, char key)
+{
+	data->map[data->ppi][data->ppj] = '0';
+	if (key == A)
+	{
+		data->ppj--;
+		data->direction = 'a';
+	}
+	else if (key == D)
+	{
+		data->ppj++;
+		data->direction = 'd';
+	}
+	else if (key == W)
+	{
+		data->ppi--;
+		data->direction = 'w';
+	}
+	else if (key == S)
+	{
+		data->ppi++;
+		data->direction = 's';
+	}
+	check_collec(data);
+	data->map[data->ppi][data->ppj] = 'P';
+}
+
 void	check_collec(t_data *data)
 {
 	if (data->map[data->ppi][data->ppj] == 'C')
@@ -53,17 +80,5 @@ void	player_move(t_data *data, char key)
 		exit_fail(data, "cleaning the screen\n");
 	ft_printf("Steps counter: %d\n", ++data->move_count);
 	if ((check_wall(data, key) == 1) && (check_exit(data, key) == 1))
-	{
-		data->map[data->ppi][data->ppj] = '0';
-		if (key == A)
-			data->ppj--;
-		else if (key == D)
-			data->ppj++;
-		else if (key == W)
-			data->ppi--;
-		else if (key == S)
-			data->ppi++;
-		check_collec(data);
-		data->map[data->ppi][data->ppj] = 'P';
-	}
+		player_go(data, key);
 }

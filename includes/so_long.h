@@ -27,13 +27,8 @@
 #  define O_DIRECTORY 00200000
 # endif
 
-# define OK 0
-# define FAIL 1
-
-// definir tamaños
-# define IMG_SIZE 32 // tamaño de las imagenes
-# define WIN_WIDTH 800// ancho de la ventana
-# define WIN_HEIGHT 600 // altura de la ventana
+// definir tamaño
+# define IMG_SIZE 40
 
 // controles
 # define A 97
@@ -42,13 +37,19 @@
 # define W 119
 
 // definir colores
-# define RED_PIXEL 0xFF0000 // color rojo
-# define GREEN_PIXEL 0xFFFF00 // color verde
-# define WHITE_PIXEL 0xFFFFFF // color blanco
+# define RED 0xFF0000 // color rojo
+# define WHITE 0xFFFF00 // color verde
 
 // definir direccion de imagenes
 # define WALL_DIR "textures/wall.xpm"
-# define PLAYER_DIR "textures/player.xpm"
+# define PLAYER_A1 "textures/player_a1.xpm"
+# define PLAYER_A2 "textures/player_a2.xpm"
+# define PLAYER_W1 "textures/player_w1.xpm"
+# define PLAYER_W2 "textures/player_w2.xpm"
+# define PLAYER_D1 "textures/player_d1.xpm"
+# define PLAYER_D2 "textures/player_d2.xpm"
+# define PLAYER_S1 "textures/player_s1.xpm"
+# define PLAYER_S2 "textures/player_s2.xpm"
 # define SPACE_DIR "textures/space.xpm"
 # define EXIT_DIR "textures/exit.xpm"
 # define COLLEC_DIR "textures/collec.xpm"
@@ -61,9 +62,17 @@ typedef struct s_img
 	int		line_len;
 	void	*collec;
 	void	*exit;
-	void	*player;
+	void	*player_a1;
+	void	*player_a2;
+	void	*player_w1;
+	void	*player_w2;
+	void	*player_d1;
+	void	*player_d2;
+	void	*player_s1;
+	void	*player_s2;
 	void	*space;
 	void	*wall;
+	int		timer;
 }		t_img;
 
 typedef struct s_data
@@ -82,6 +91,7 @@ typedef struct s_data
 	int		c_counter;
 	int		p_counter;
 	int		e_counter;
+	char	direction;
 	t_img	img;
 }		t_data;
 
@@ -101,15 +111,22 @@ void	data_init(t_data *data);
 void	player_init(t_data *data);
 
 //////////////		03_MAP_CHECK		//////////////
+void	check_char(t_data *data);
+void	check_walls(t_data *data);
+void	check_rectangle(t_data *data);
 void	map_check(t_data *data);
 
 //////////////		04_WIN_INIT			//////////////
+int		win_width(t_data *data);
 void	win_init(t_data *data);
 
 //////////////		05_IMG_INIT			//////////////
 void	img_init(t_data *data);
 
 //////////////		06_RENDER			//////////////
+void	put_img(t_data *data, int i, int j, int size);
+void	animation_1(t_data *data, int i, int j, int size);
+void	animation_2(t_data *data, int i, int j, int size);
 int		render(t_data *data);
 void	img_loop(t_data data);
 
@@ -118,6 +135,10 @@ int		press_exit(t_data *data);
 int		keypress(int keysym, t_data *data);
 
 //////////////		08_MOVE				//////////////
+int		check_wall(t_data *data, char key);
+int		check_exit(t_data *data, char key);
+void	player_go(t_data *data, char key);
+void	check_collec(t_data *data);
 void	player_move(t_data *data, char key);
 
 //////////////		09_ERROR			//////////////

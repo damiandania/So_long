@@ -57,10 +57,10 @@ LFLAGS:= -L $(LIBFT_DIR) -lft
 
 #~~~~~~OS COMPILATION~~~~~~
 # LINUX
-MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
+#MLX_FLAGS = -L minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
 # MAC
-#INC_LIB=/usr/local/lib
-#MLX_FLAGS = -L.. -lmlx -L$(INC_LIB) -lXext -lX11
+INC_LIB=/usr/local/lib
+MLX_FLAGS = -L.. -lmlx -L$(INC_LIB) -lXext -lX11
 
 #~~~~~~COMPILATION RULES~~~~~~
 all: $(NAME)

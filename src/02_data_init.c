@@ -22,6 +22,8 @@ void	data_init(t_data *data)
 	data->c_counter = 0;
 	data->p_counter = 0;
 	data->e_counter = 0;
+	data->direction = 'd';
+	data->img.timer = 0;
 	player_init(data);
 }
 
