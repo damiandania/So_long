@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:19:26 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 18:33:45 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:34:37 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ void	map_to_ptr(t_data *data)
 	line = get_next_line(data->fd);
 	while (line != NULL)
 	{
+		if (i >= data->i_counter)
+			exit_soft(data, "map not valid\n");
 		data->map[i] = malloc(sizeof(char) * (ft_strlen(line) + 1));
 		if (!data->map[i])
-			exit_fail(data, "map not valid\n");
+			exit_soft(data, "map not valid\n");
 		j = 0;
 		while (line[j] != '\0')
 		{
@@ -48,9 +50,7 @@ int	line_counter(t_data *data, char *file_path)
 	line_count = 0;
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
-	{
-		(exit_fail(data, "map not valid\n"));
-	}
+		exit_soft(data, "map not valid\n");
 	else
 	{
 		line = get_next_line(fd);
@@ -71,11 +71,9 @@ void	read_map(char *file_path, t_data *data)
 	data->path = file_path;
 	data->map = (char **)malloc(sizeof(char *) * (data->i_counter + 1));
 	if (!data->map)
-		exit_fail(data, "map not valid\n");
+		exit_soft(data, "map not valid\n");
 	data->fd = open(file_path, O_RDONLY);
 	if (data->fd < 0)
-		exit_fail(data, "map not valid\n");
-	else
-		map_to_ptr(data);
-	close(data->fd);
+		exit_soft(data, "map not valid\n");
+	map_to_ptr(data);
 }

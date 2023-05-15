@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:13:10 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/14 13:43:18 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:36:24 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-		exit_fail(data, "Closing window\n");
+		exit_hard(data, "Closing window\n");
 	else if (keysym == A || keysym == S || keysym == W || keysym == D)
 		player_move(data, keysym);
 	return (0);
@@ -23,6 +23,6 @@ int	keypress(int keysym, t_data *data)
 
 int	press_exit(t_data *data)
 {
-	exit_fail(data, "Closing window\n");
+	exit_hard(data, "Closing window\n");
 	return (0);
 }

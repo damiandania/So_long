@@ -6,7 +6,7 @@
 #    By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/13 19:56:51 by ddania-c          #+#    #+#              #
-#    Updated: 2023/05/15 16:27:44 by ddania-c         ###   ########.fr        #
+#    Updated: 2023/05/15 19:47:20 by ddania-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ SRCS	= 	$(SRC_DIR)/main.c				\
 			$(SRC_DIR)/01_read_map.c		\
 			$(SRC_DIR)/02_data_init.c		\
 			$(SRC_DIR)/03_map_check.c		\
-			$(SRC_DIR)/04_win_init.c		\
-			$(SRC_DIR)/05_img_init.c		\
+			$(SRC_DIR)/04_valid_path.c		\
+			$(SRC_DIR)/05_win_img_init.c	\
 			$(SRC_DIR)/06_render.c			\
 			$(SRC_DIR)/08_move.c			\
 			$(SRC_DIR)/07_events.c			\

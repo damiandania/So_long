@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:03:35 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 19:52:38 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:35:53 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct s_data
 	int		p_counter;
 	int		e_counter;
 	char	direction;
+	int		c_doubles;
+	int		e_doubles;
 	t_img	img;
 }		t_data;
 
@@ -118,13 +120,17 @@ void	check_walls(t_data *data);
 void	check_rectangle(t_data *data);
 void	map_check(t_data *data);
 
-//////////////		04_WIN_INIT			//////////////
-int		win_width(t_data *data);
-void	win_init(t_data *data);
+//////////////		04_VALID_PATH		//////////////
+void	valid_path(t_data *data);
+void	find_path(int i, int j, t_data *data, char **map);
+void	copy_map(t_data *data, char ***map);
+void	find_path_next(int i, int j, t_data *data, char **map);
 
 //////////////		05_IMG_INIT			//////////////
 void	img_init_player(t_data *data);
 void	img_init(t_data *data);
+int		win_width(t_data *data);
+void	win_init(t_data *data);
 
 //////////////		06_RENDER			//////////////
 void	put_img(t_data *data, int i, int j, int size);
@@ -145,8 +151,9 @@ void	check_collec(t_data *data);
 void	player_move(t_data *data, char key);
 
 //////////////		09_ERROR			//////////////
+void	exit_soft(t_data *data, char *msg);
+void	exit_hard(t_data *data, char *msg);
 void	exit_ok(t_data *data, char *msg);
-void	exit_fail(t_data *data, char *msg);
 void	destroy_img(t_data *data);
 void	free_map(char **map);
 

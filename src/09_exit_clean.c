@@ -6,11 +6,31 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:22:10 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/15 17:19:45 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:37:49 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	exit_soft(t_data *data, char *msg)
+{
+	if (data->map)
+		free_map(data->map);
+	ft_printf("%s\n", msg);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
+	exit(1);
+}
+
+void	exit_hard(t_data *data, char *msg)
+{
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	destroy_img(data);
+	free(data->mlx_ptr);
+	data->win_ptr = NULL;
+	exit_soft(data, msg);
+	exit (1);
+}
 
 void	exit_ok(t_data *data, char *msg)
 {
@@ -22,21 +42,6 @@ void	exit_ok(t_data *data, char *msg)
 		free_map(data->map);
 	data->win_ptr = NULL;
 	exit (0);
-}
-
-void	exit_fail(t_data *data, char *msg)
-{
-	if (data->mlx_ptr != NULL)
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	if (data->mlx_ptr != NULL)
-		destroy_img(data);
-	free(data->mlx_ptr);
-	if (data->map)
-		free_map(data->map);
-	data->win_ptr = NULL;
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(msg, 2);
-	exit (1);
 }
 
 void	destroy_img(t_data *data)
@@ -59,15 +64,13 @@ void	destroy_img(t_data *data)
 
 void	free_map(char **map)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (map[i])
+	while (map[i] != NULL)
 	{
 		free(map[i]);
 		i++;
 	}
 	free(map);
-	map = NULL;
-	return ;
 }

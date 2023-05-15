@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:08:21 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/11 17:31:24 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/15 22:10:03 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	data_init(t_data *data)
 	data->ppi = 0;
 	data->ppj = 0;
 	data->c_counter = 0;
+	data->c_doubles = 0;
 	data->p_counter = 0;
 	data->e_counter = 0;
+	data->e_doubles = 0;
 	data->direction = 'd';
 	data->img.timer = 0;
 	player_init(data);

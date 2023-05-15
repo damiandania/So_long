@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:13:11 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/14 13:39:42 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:37:23 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_exit(t_data *data, char key)
 	{
 		if (data->c_counter == 0)
 		{
-			exit_ok(data, "Game finished\n");
+			exit_hard(data, "Game finished\n");
 			return (0);
 		}
 		else
@@ -77,7 +77,7 @@ void	check_collec(t_data *data)
 void	player_move(t_data *data, char key)
 {
 	if (system("clear") != 0)
-		exit_fail(data, "cleaning the screen\n");
+		exit_hard(data, "cleaning the screen\n");
 	ft_printf("Steps counter: %d\n", ++data->move_count);
 	if ((check_wall(data, key) == 1) && (check_exit(data, key) == 1))
 		player_go(data, key);
