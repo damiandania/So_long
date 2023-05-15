@@ -14,10 +14,21 @@
 
 void	img_init(t_data *data)
 {
-	data->img.collec = mlx_xpm_file_to_image(data->mlx_ptr, COLLEC_DIR,
+	img_init_player(data);
+	data->img.collec_1 = mlx_xpm_file_to_image(data->mlx_ptr, COLLEC_1,
+			&data->img.width, &data->img.heigth);
+	data->img.collec_2 = mlx_xpm_file_to_image(data->mlx_ptr, COLLEC_2,
 			&data->img.width, &data->img.heigth);
 	data->img.exit = mlx_xpm_file_to_image(data->mlx_ptr, EXIT_DIR,
 			&data->img.width, &data->img.heigth);
+	data->img.space = mlx_xpm_file_to_image(data->mlx_ptr, SPACE_DIR,
+			&data->img.width, &data->img.heigth);
+	data->img.wall = mlx_xpm_file_to_image(data->mlx_ptr, WALL_DIR,
+			&data->img.width, &data->img.heigth);
+}
+
+void	img_init_player(t_data *data)
+{
 	data->img.player_a1 = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_A1,
 			&data->img.width, &data->img.heigth);
 	data->img.player_a2 = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_A2,
@@ -33,9 +44,5 @@ void	img_init(t_data *data)
 	data->img.player_s1 = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_S1,
 			&data->img.width, &data->img.heigth);
 	data->img.player_s2 = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_S2,
-			&data->img.width, &data->img.heigth);
-	data->img.space = mlx_xpm_file_to_image(data->mlx_ptr, SPACE_DIR,
-			&data->img.width, &data->img.heigth);
-	data->img.wall = mlx_xpm_file_to_image(data->mlx_ptr, WALL_DIR,
 			&data->img.width, &data->img.heigth);
 }

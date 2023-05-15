@@ -52,7 +52,8 @@
 # define PLAYER_S2 "textures/player_s2.xpm"
 # define SPACE_DIR "textures/space.xpm"
 # define EXIT_DIR "textures/exit.xpm"
-# define COLLEC_DIR "textures/collec.xpm"
+# define COLLEC_1 "textures/collec_1.xpm"
+# define COLLEC_2 "textures/collec_2.xpm"
 
 typedef struct s_img
 {
@@ -60,7 +61,8 @@ typedef struct s_img
 	int		width;
 	int		heigth;
 	int		line_len;
-	void	*collec;
+	void	*collec_1;
+	void	*collec_2;
 	void	*exit;
 	void	*player_a1;
 	void	*player_a2;
@@ -121,6 +123,7 @@ int		win_width(t_data *data);
 void	win_init(t_data *data);
 
 //////////////		05_IMG_INIT			//////////////
+void	img_init_player(t_data *data);
 void	img_init(t_data *data);
 
 //////////////		06_RENDER			//////////////

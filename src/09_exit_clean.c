@@ -51,7 +51,8 @@ void	destroy_img(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->img.player_d2);
 	mlx_destroy_image(data->mlx_ptr, data->img.player_s1);
 	mlx_destroy_image(data->mlx_ptr, data->img.player_s2);
-	mlx_destroy_image(data->mlx_ptr, data->img.collec);
+	mlx_destroy_image(data->mlx_ptr, data->img.collec_1);
+	mlx_destroy_image(data->mlx_ptr, data->img.collec_2);
 	mlx_destroy_image(data->mlx_ptr, data->img.space);
 	mlx_destroy_display(data->mlx_ptr);
 }
