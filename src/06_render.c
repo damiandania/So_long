@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 20:13:18 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/13 19:14:06 by ddania-c         ###   ########.fr       */
+/*   Created: 2023/05/15 17:24:32 by ddania-c          #+#    #+#             */
+/*   Updated: 2023/05/15 17:25:13 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	put_img(t_data *data, int i, int j, int size)
 {
 	if (data->map[i][j] == '1')
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.wall,
-			size, i * IMG_SIZE);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img.wall, size, i * IMG_SIZE);
 	else if (data->map[i][j] == '0')
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.space,
-			size, i * IMG_SIZE);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img.space, size, i * IMG_SIZE);
 	else if (data->map[i][j] == 'E')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.exit,
 			size, i * IMG_SIZE);
@@ -27,10 +27,10 @@ void	put_img(t_data *data, int i, int j, int size)
 
 void	animation_1(t_data *data, int i, int j, int size)
 {
-	if (data->map[i][j] == 'C' && data->img.timer <= 20)
+	if (data->map[i][j] == 'C' && data->img.timer <= 100)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img.collec_1, size, i * IMG_SIZE);
-	else if (data->map[i][j] == 'P' && data->img.timer <= 20)
+	else if (data->map[i][j] == 'P' && data->img.timer <= 100)
 	{
 		if (data->direction == 'a')
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -50,10 +50,10 @@ void	animation_1(t_data *data, int i, int j, int size)
 
 void	animation_2(t_data *data, int i, int j, int size)
 {
-	if (data->map[i][j] == 'C' && data->img.timer > 20)
+	if (data->map[i][j] == 'C' && data->img.timer > 100)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img.collec_2, size, i * IMG_SIZE);
-	if (data->map[i][j] == 'P' && data->img.timer > 20)
+	if (data->map[i][j] == 'P' && data->img.timer > 100)
 	{
 		if (data->direction == 'a')
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -68,7 +68,7 @@ void	animation_2(t_data *data, int i, int j, int size)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->img.player_s2, size, i * IMG_SIZE);
 		data->img.timer++;
-		if (data->img.timer > 39)
+		if (data->img.timer > 199)
 			data->img.timer = 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:11:39 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/14 13:46:40 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:44:15 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ void	check_rectangle(t_data *data)
 void	map_check(t_data *data)
 {
 	check_rectangle(data);
+	printf("rectangle OK\n");
 	check_char(data);
+	printf("chars OK\n");
 	check_walls(data);
+	printf("walls OK\n");
 }
