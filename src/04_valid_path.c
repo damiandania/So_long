@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 22:08:52 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/15 22:13:27 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:37:40 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,17 @@ void	copy_map(t_data *data, char ***map)
 
 	i = 0;
 	*map = (char **)malloc(data->i_counter * sizeof(char *));
+	if (!map[i])
+			exit_soft(data, "map not valid\n");
 	while (i < data->i_counter)
 	{
 		(*map)[i] = (char *)malloc((data->j_counter + 1) * sizeof(char));
 		ft_memcpy((*map)[i], data->map[i], data->j_counter + 1);
+		if (!map)
+		{
+			free_map2(*map, data);
+			exit_soft(data, "Memory\n");
+		}
 		i++;
 	}
 }

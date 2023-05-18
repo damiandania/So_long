@@ -6,7 +6,7 @@
 /*   By: ddania-c <ddania-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:13:11 by ddania-c          #+#    #+#             */
-/*   Updated: 2023/05/15 21:37:23 by ddania-c         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:20:04 by ddania-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_exit(t_data *data, char key)
 	{
 		if (data->c_counter == 0)
 		{
-			exit_hard(data, "Game finished\n");
+			exit_ok(data, "Game finished\n");
 			return (0);
 		}
 		else
